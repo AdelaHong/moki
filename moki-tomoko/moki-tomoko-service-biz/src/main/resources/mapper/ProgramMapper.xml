@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.im.moki.tomoko.mapper.ProgramMapper">
+
+    <resultMap id="BaseResultMap" type="com.im.moki.tomoko.entity.ProgramEntity">
+        <!--  -->
+        <id column="ID" property="id" jdbcType="BIGINT" />
+        <!-- 所属频道id -->
+        <result column="CHANNEL_ID" property="channelId" jdbcType="BIGINT" />
+        <!-- 节目单名称 -->
+        <result column="PROGRAM_NAME" property="programName" jdbcType="VARCHAR" />
+        <!-- 开始播放时间 -->
+        <result column="START_TIME" property="startTime" jdbcType="TIMESTAMP" />
+        <!-- 播放结束时间 -->
+        <result column="END_TIME" property="endTime" jdbcType="TIMESTAMP" />
+        <!-- 描述 -->
+        <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
+        <!-- 类别：1 电视剧 2 电影 3 综艺 4 体育 5 纪录片 -->
+        <result column="TYPE" property="type" jdbcType="SMALLINT" />
+        <!-- 图片 -->
+        <result column="PICUTURE_URL" property="picutureUrl" jdbcType="VARCHAR" />
+        <!--  -->
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+        <!--  -->
+        <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        t.ID,t.CHANNEL_ID,t.PROGRAM_NAME,t.START_TIME,t.END_TIME,t.DESCRIPTION,t.TYPE,t.PICUTURE_URL,t.CREATE_TIME,t.UPDATE_TIME
+
+    </sql>
+
+</mapper>

@@ -36,6 +36,11 @@
 			<artifactId>moki-tomoko-service-api</artifactId>
 			<version>1.0.0</version>
 		</dependency>
+		<dependency>
+			<groupId>com.im</groupId>
+			<artifactId>moki-common</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 
 		<dependency>
 			<groupId>com.alibaba</groupId>

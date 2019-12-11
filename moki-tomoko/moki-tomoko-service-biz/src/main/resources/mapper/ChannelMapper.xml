@@ -22,4 +22,13 @@
 
     </sql>
 
+    <select id="selectChannelData">
+        select <include refid="Base_Column_List"/> from tf_b_channel t
+        <where>
+            <if test="null != channelName and '' != channelName">
+                <bind name="_channelName" value="'%' + channelName + '%'"/>
+                and t.CHANNEL_NAME like #{_channelName}
+            </if>
+        </where>
+    </select>
 </mapper>

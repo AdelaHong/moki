@@ -17,7 +17,9 @@
 
     <dubbo:annotation package="com.im.moki.tomoko.service.impl"/>
 
-    <dubbo:service timeout="10000" retries="0" interface="com.im.moki.tomoko.rpc.TestProtocol"
+    <dubbo:service retries="0" interface="com.im.moki.tomoko.rpc.TestProtocol"
                    ref="testProtocol"/>
+    <dubbo:service retries="0" interface="com.im.moki.tomoko.rpc.ChannelProtocol"
+                   ref="channelProtocol"/>
 
 </beans>

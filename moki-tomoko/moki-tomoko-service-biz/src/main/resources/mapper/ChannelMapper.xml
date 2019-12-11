@@ -3,16 +3,22 @@
 <mapper namespace="com.im.moki.tomoko.mapper.ChannelMapper">
 
     <resultMap id="BaseResultMap" type="com.im.moki.tomoko.entity.ChannelEntity">
-        <!-- 频道id -->
-        <id column="CHANNEL_ID" property="channelId" jdbcType="BIGINT" />
-        <!-- 频道号 -->
-        <result column="CHANNEL_NO" property="channelNo" jdbcType="VARCHAR" />
+        <!--  -->
+        <id column="ID" property="id" jdbcType="BIGINT" />
         <!-- 频道名称 -->
         <result column="CHANNEL_NAME" property="channelName" jdbcType="VARCHAR" />
+        <!-- 频道图标 -->
+        <result column="LOGO" property="logo" jdbcType="VARCHAR" />
+        <!-- 播放地址 -->
+        <result column="PLAY_URL" property="playUrl" jdbcType="VARCHAR" />
+        <!-- 创建时间 -->
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+        <!-- 更新时间 -->
+        <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
     </resultMap>
 
     <sql id="Base_Column_List" >
-        t.CHANNEL_ID,t.CHANNEL_NO,t.CHANNEL_NAME
+        t.ID,t.CHANNEL_NAME,t.LOGO,t.PLAY_URL,t.CREATE_TIME,t.UPDATE_TIME
 
     </sql>
 

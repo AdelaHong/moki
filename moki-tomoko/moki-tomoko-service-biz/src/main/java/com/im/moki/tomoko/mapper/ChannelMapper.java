@@ -18,4 +18,6 @@ public interface ChannelMapper extends BaseMapper<ChannelEntity> {
 
 
     List<ChannelEntity> selectChannelData(Map<String, Object> params);
+
+    ChannelEntity selectByChannelName(String channelName);
 }

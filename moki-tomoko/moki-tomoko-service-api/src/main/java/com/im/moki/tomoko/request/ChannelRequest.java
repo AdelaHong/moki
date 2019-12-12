@@ -1,10 +1,6 @@
-package com.im.moki.tomoko.entity;
+package com.im.moki.tomoko.request;
 
 
-import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.annotations.TableName;
-import com.baomidou.mybatisplus.enums.IdType;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -17,43 +13,35 @@ import java.util.Date;
  * @Date 2019-12-11
  */
 @Data
-@TableName("tf_b_channel")
-public class ChannelEntity  implements Serializable {
+public class ChannelRequest implements Serializable {
 
     /**
      *
      */
-    @TableId(value="ID", type= IdType.AUTO)
     private Long id;
     /**
      * 频道名称
      */
-    @TableField("CHANNEL_NAME")
     private String channelName;
     /**
      * 频道图标
      */
-    @TableField("LOGO")
     private String logo;
     /**
      * 播放地址
      */
-    @TableField("PLAY_URL")
     private String playUrl;
     /**
      * 0 未删除 1 已删除
      */
-    @TableField("DELETE_FLAG")
     private Integer deleteFlag;
     /**
      * 创建时间
      */
-    @TableField("CREATE_TIME")
     private Date createTime;
     /**
      * 更新时间
      */
-    @TableField("UPDATE_TIME")
     private Date updateTime;
 
 }

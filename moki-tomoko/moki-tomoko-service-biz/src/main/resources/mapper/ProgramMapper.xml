@@ -19,6 +19,8 @@
         <result column="TYPE" property="type" jdbcType="SMALLINT" />
         <!-- 图片 -->
         <result column="PICUTURE_URL" property="picutureUrl" jdbcType="VARCHAR" />
+        <!-- 0 未删除 1 已删除 -->
+        <result column="DELETE_FLAG" property="deleteFlag" jdbcType="SMALLINT" />
         <!--  -->
         <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
         <!--  -->
@@ -26,7 +28,7 @@
     </resultMap>
 
     <sql id="Base_Column_List" >
-        t.ID,t.CHANNEL_ID,t.PROGRAM_NAME,t.START_TIME,t.END_TIME,t.DESCRIPTION,t.TYPE,t.PICUTURE_URL,t.CREATE_TIME,t.UPDATE_TIME
+        t.ID,t.CHANNEL_ID,t.PROGRAM_NAME,t.START_TIME,t.END_TIME,t.DESCRIPTION,t.TYPE,t.PICUTURE_URL,t.DELETE_FLAG,t.CREATE_TIME,t.UPDATE_TIME
 
     </sql>
 

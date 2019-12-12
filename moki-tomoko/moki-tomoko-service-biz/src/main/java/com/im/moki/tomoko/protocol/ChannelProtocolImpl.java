@@ -2,6 +2,7 @@ package com.im.moki.tomoko.protocol;
 
 import com.im.moki.common.util.PageInfo;
 import com.im.moki.common.util.Result;
+import com.im.moki.tomoko.request.ChannelRequest;
 import com.im.moki.tomoko.rpc.ChannelProtocol;
 import com.im.moki.tomoko.service.intf.ChannelService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +35,27 @@ public class ChannelProtocolImpl implements ChannelProtocol {
     @Override
     public Result addChannelData(Map<String, Object> params) {
         return channelService.addChannelData(params);
+    }
+
+
+    /**
+     * 更新频道信息
+     * @param request
+     * @return
+     */
+    @Override
+    public Result updateChannelData(ChannelRequest request) {
+        return channelService.updateChannelData(request);
+    }
+
+
+    /**
+     * 删除频道
+     * @param params
+     * @return
+     */
+    @Override
+    public Result deleteChannelData(Map<String, Object> params) {
+        return channelService.deleteChannelData(params);
     }
 }

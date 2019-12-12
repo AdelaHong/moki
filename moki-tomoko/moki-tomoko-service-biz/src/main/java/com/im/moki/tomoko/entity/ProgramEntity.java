@@ -60,6 +60,11 @@ public class ProgramEntity  implements Serializable {
     @TableField("PICUTURE_URL")
     private String picutureUrl;
     /**
+     * 0 未删除 1 已删除
+     */
+    @TableField("DELETE_FLAG")
+    private Integer deleteFlag;
+    /**
      *
      */
     @TableField("CREATE_TIME")

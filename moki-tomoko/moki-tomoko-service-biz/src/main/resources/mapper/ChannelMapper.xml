@@ -11,6 +11,8 @@
         <result column="LOGO" property="logo" jdbcType="VARCHAR" />
         <!-- 播放地址 -->
         <result column="PLAY_URL" property="playUrl" jdbcType="VARCHAR" />
+        <!-- 0 未删除 1 已删除 -->
+        <result column="DELETE_FLAG" property="deleteFlag" jdbcType="SMALLINT" />
         <!-- 创建时间 -->
         <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
         <!-- 更新时间 -->
@@ -18,17 +20,27 @@
     </resultMap>
 
     <sql id="Base_Column_List" >
-        t.ID,t.CHANNEL_NAME,t.LOGO,t.PLAY_URL,t.CREATE_TIME,t.UPDATE_TIME
+        t.ID,t.CHANNEL_NAME,t.LOGO,t.PLAY_URL,t.DELETE_FLAG,t.CREATE_TIME,t.UPDATE_TIME
 
     </sql>
 
-    <select id="selectChannelData">
+    <select id="selectChannelData" resultMap="BaseResultMap">
         select <include refid="Base_Column_List"/> from tf_b_channel t
-        <where>
-            <if test="null != channelName and '' != channelName">
-                <bind name="_channelName" value="'%' + channelName + '%'"/>
-                and t.CHANNEL_NAME like #{_channelName}
-            </if>
-        </where>
+        WHERE t.DELETE_FLAG=0
+        <if test="null != channelName and '' != channelName">
+            <bind name="_channelName" value="'%' + channelName + '%'"/>
+            and t.CHANNEL_NAME like #{_channelName}
+        </if>
+        <if test="createTimeS != null and createTimeS!= ''">
+            and t.CREATE_TIME >= #{createTimeS}
+        </if>
+        <if test="createTimeE != null and createTimeE!= ''">
+            <![CDATA[ and t.CREATE_TIME <= #{createTimeE} ]]>
+        </if>
+    </select>
+
+    <select id="selectByChannelName" resultType="com.im.moki.tomoko.entity.ChannelEntity">
+        select <include refid="Base_Column_List"/> from tf_b_channel t
+        where t.CHANNEL_NAME=#{channelName}
     </select>
 </mapper>

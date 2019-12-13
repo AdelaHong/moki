@@ -19,7 +19,6 @@
 
     <dubbo:service retries="0" interface="com.im.moki.tomoko.rpc.TestProtocol"
                    ref="testProtocol"/>
-    <dubbo:service retries="0" interface="com.im.moki.tomoko.rpc.ChannelProtocol"
-                   ref="channelProtocol"/>
-
+    <dubbo:service retries="0" interface="com.im.moki.tomoko.rpc.ChannelProtocol" ref="channelProtocol"/>
+    <dubbo:service retries="0" interface="com.im.moki.tomoko.rpc.ProgramProtocol" ref="programProtocol"/>
 </beans>

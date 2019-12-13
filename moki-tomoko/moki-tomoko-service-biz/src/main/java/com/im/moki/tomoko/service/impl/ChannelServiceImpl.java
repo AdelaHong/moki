@@ -66,7 +66,7 @@ public class ChannelServiceImpl extends ServiceImpl<ChannelMapper, ChannelEntity
                 return TomokoResult.createFailedRes(TomokoCode.DEFAULT_FAIL.getCode(),"请输入播放地址！");
             }
 
-            ChannelEntity entity = baseMapper.selectByChannelName(channelName);
+            ChannelEntity entity = baseMapper.selectByChannelName(channelName,null);
             if (null != entity) {
                 return TomokoResult.createFailedRes(TomokoCode.DEFAULT_FAIL.getCode(),"已存在该频道，请核实！");
             }
@@ -102,6 +102,11 @@ public class ChannelServiceImpl extends ServiceImpl<ChannelMapper, ChannelEntity
             ChannelEntity entity = baseMapper.selectById(request.getId());
             if (null == entity) {
                 return TomokoResult.createFailedRes(TomokoCode.DEFAULT_FAIL.getCode(),"不存在该频道信息，请核实！");
+            }
+
+            entity = baseMapper.selectByChannelName(request.getChannelName(),request.getId());
+            if (null == entity) {
+                return TomokoResult.createFailedRes(TomokoCode.DEFAULT_FAIL.getCode(),"频道名称已存在，请核实！");
             }
 
             request.setUpdateTime(new Date());

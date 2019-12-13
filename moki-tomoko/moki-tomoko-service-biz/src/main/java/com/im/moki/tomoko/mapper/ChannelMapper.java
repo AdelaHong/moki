@@ -3,6 +3,7 @@ package com.im.moki.tomoko.mapper;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.im.moki.tomoko.entity.ChannelEntity;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -19,5 +20,5 @@ public interface ChannelMapper extends BaseMapper<ChannelEntity> {
 
     List<ChannelEntity> selectChannelData(Map<String, Object> params);
 
-    ChannelEntity selectByChannelName(String channelName);
+    ChannelEntity selectByChannelName(@Param("channelName") String channelName, @Param("id")Long id);
 }

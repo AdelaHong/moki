@@ -32,4 +32,52 @@
 
     </sql>
 
+    <select id="selectChannelData" resultType="com.im.moki.tomoko.dto.ProgramDto">
+        select <include refid="Base_Column_List"/>,c.CHANNEL_NAME
+        from tf_b_program t,tf_b_channel c where t.CHANNEL_ID=t.ID
+        and t.DELETE_FLAG=0
+        <if test="null != programName and '' != programName">
+            <bind name="_programName" value="'%' + programName + '%'"/>
+            and t.PROGRAM_NAME like #{_programName}
+        </if>
+        <!-- 开始播放时间-->
+        <if test="startTimeS != null and startTimeS!= ''">
+            and t.START_TIME >= #{startTimeS}
+        </if>
+        <if test="startTimeE != null and startTimeE!= ''">
+            <![CDATA[ and t.START_TIME <= #{startTimeE} ]]>
+        </if>
+        <!-- 结束播放时间-->
+        <if test="endTimeS != null and endTimeS!= ''">
+            and t.END_TIME >= #{endTimeS}
+        </if>
+        <if test="endTimeE != null and endTimeE!= ''">
+            <![CDATA[ and t.END_TIME <= #{endTimeE} ]]>
+        </if>
+        <!--类型-->
+        <if test="type != null and type!= ''">
+            and t.TYPE = #{type}
+        </if>
+        <!-- 创建时间-->
+        <if test="createTimeS != null and createTimeS!= ''">
+            and t.CREATE_TIME >= #{createTimeS}
+        </if>
+        <if test="createTimeE != null and createTimeE!= ''">
+            <![CDATA[ and t.CREATE_TIME <= #{createTimeE} ]]>
+        </if>
+    </select>
+
+    <select id="selectByProgramName" resultType="com.im.moki.tomoko.entity.ProgramEntity">
+        SELECT <include refid="Base_Column_List"/> from tf_b_program t
+        where t.DELETE_FLAG=0
+        and
+        (
+          ( t.START_TIME > #{startTime} and <![CDATA[ and t.END_TIME <= #{startTime} ]]>)
+          or
+          ( t.START_TIME > #{endtTime} and <![CDATA[ and t.END_TIME <= #{endtTime} ]]>)
+        )
+        <if test="null != id">
+            and t.id !=#{id}
+        </if>
+    </select>
 </mapper>

@@ -42,5 +42,8 @@
     <select id="selectByChannelName" resultType="com.im.moki.tomoko.entity.ChannelEntity">
         select <include refid="Base_Column_List"/> from tf_b_channel t
         where t.CHANNEL_NAME=#{channelName}
+        <if test="null != id">
+            and t.id !=#{id}
+        </if>
     </select>
 </mapper>

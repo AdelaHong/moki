@@ -92,6 +92,13 @@
 		</dependency>
 
 		<!-- github 分页助手 结束 -->
+
+
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.32</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -103,4 +110,14 @@
 		</plugins>
 	</build>
 
+	<distributionManagement>
+		<repository>
+			<id>releases</id>
+			<url>http://localhost:8081/repository/ss_hosted/</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<url>http://localhost:8081/repository/ss_hosted1/</url>
+		</snapshotRepository>
+	</distributionManagement>
 </project>

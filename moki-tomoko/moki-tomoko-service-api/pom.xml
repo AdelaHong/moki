@@ -38,23 +38,17 @@
 	</dependencies>
 
 	<build>
+		<finalName>${project.artifactId}</finalName>
 		<plugins>
+			<!--配置生成源码包-->
 			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>1.5.3.RELEASE</version>
-				<configuration>
-					<mainClass>com.xx.webapps.api.main.WebappsApiBidMain</mainClass>
-				</configuration>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
 				<executions>
 					<execution>
+						<id>attach-sources</id>
 						<goals>
-							<goal>repackage</goal>
+							<goal>jar</goal>
 						</goals>
 					</execution>
 				</executions>

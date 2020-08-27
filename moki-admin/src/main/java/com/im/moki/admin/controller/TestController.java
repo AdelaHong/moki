@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
+@RequestMapping("t")
 public class TestController {
 
     @Reference
@@ -14,10 +15,9 @@ public class TestController {
 
 
     @RequestMapping("test")
-    @ResponseBody
     public String test(){
         String a = testProtocol.aa();
-        return "1";
+        return "index";
     }
 
 }

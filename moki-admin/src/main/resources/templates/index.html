@@ -3,8 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
 </head>
 <body>
-1111111
+    <div id ="app">
+        <el-form :inline="true" :model="formInline" class="demo-form-inline">
+            <el-form-item label="审批人">
+                <el-input v-model="formInline.user" placeholder="审批人"></el-input>
+            </el-form-item>
+            <el-form-item label="活动区域">
+                <el-select v-model="formInline.region" placeholder="活动区域">
+                    <el-option label="区域一" value="shanghai"></el-option>
+                    <el-option label="区域二" value="beijing"></el-option>
+                </el-select>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @click="onSubmit">查询</el-button>
+            </el-form-item>
+        </el-form>
+
+        <el-table
+                :data="tableData"
+                border
+                style="width: 100%">
+            <el-table-column
+                    prop="date"
+                    label="日期"
+                    width="180">
+            </el-table-column>
+            <el-table-column
+                    prop="name"
+                    label="姓名"
+                    width="180">
+            </el-table-column>
+            <el-table-column
+                    prop="address"
+                    label="地址">
+            </el-table-column>
+        </el-table>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script>
+
+        new Vue ({
+            el : "#app",
+            data() {
+                return {
+                    formInline: {
+                        user: '',
+                        region: ''
+                    },
+                    tableData: [
+                        {
+                            "date" : "2020-01-01",
+                            "name" : "张三",
+                            "address" : "江苏省"
+                        },
+                        {
+                            "date" : "2020-01-01",
+                            "name" : "张三",
+                            "address" : "江苏省"
+                        }
+                    ]
+                }
+            },
+            methods: {
+                onSubmit() {
+                    console.log('submit!');
+                }
+            }
+        })
+
+    </script>
 </body>
 </html>
